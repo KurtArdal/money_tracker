@@ -1,7 +1,9 @@
 Money Tracker
 ---
+Python reads csv files downloaded from sparebanken møre, and adds them to a mysql database.
+---
 
-Written in javascript or PHP
+Written in python and html
 
 Mysql
 
