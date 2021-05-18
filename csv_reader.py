@@ -1,4 +1,5 @@
 import csv
+import sys
 from os import getcwd
 from os import listdir
 from os.path import isfile, join
@@ -27,6 +28,11 @@ mypath = getcwd()
 
 # Read in filenames
 files = [file for file in listdir(mypath) if (isfile(join(mypath, file)) and file.endswith(".csv"))]
+
+# Check if there are any files
+if len(files) <= 0:
+    print("No files")
+    sys.exit()
 
 # Position to read to, -1 for start. 
 pos = -1 
