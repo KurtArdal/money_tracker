@@ -20,7 +20,21 @@ db = config['mysqlDB']['database'])
 
 # Setup cursor and queries
 mycursor = mydb.cursor()
-ins_query = ("insert ignore into transak_import (konto_id, bokfort, rentedato, tekstkode, beskrivelse, belop, arkivref, motkonto) values (%s, %s, %s, %s, %s, %s, %s, %s)")
+#ins_query = ("insert ignore into transak_import (konto_id, bokfort, rentedato, tekstkode, beskrivelse, belop, arkivref, motkonto) values (%s, %s, %s, %s, %s, %s, %s, %s)")
+
+ins_query = ("INSERT INTO transak_import(konto_id, bokfort, rentedato, tekstkode, beskrivelse, belop, arkivref, motkonto) \
+            SELECT * FROM (SELECT %s AS konto_id, %s AS bokfort, %s AS rentedato, %s AS tekstkode, %s AS beskrivelse, %s AS belop, %s AS arkivref, %s AS motkonto) AS tmp \
+            WHERE NOT EXISTS \
+            (SELECT konto_id, bokfort, rentedato, tekstkode, beskrivelse, belop, arkivref, motkonto FROM transak_import WHERE \
+                konto_id=tmp.konto_id && \
+                bokfort=tmp.bokfort && \
+                rentedato=tmp.rentedato && \
+                tekstkode=tmp.tekstkode && \
+                beskrivelse=tmp.beskrivelse && \
+                belop=tmp.belop && \
+                arkivref=tmp.arkivref && \
+                motkonto=tmp.motkonto)")
+
 acc_query = ("select konto_id from kontoer where konto_navn = %s")# limit 1"
 
 # Get path (current working directory)
