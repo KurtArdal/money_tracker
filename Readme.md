@@ -1,5 +1,7 @@
 Money Tracker
 ---
+Python reads csv files downloaded from sparebanken møre, and adds them to a mysql database.
+---
 
 Frontend written in javascript
 Backend running ?
