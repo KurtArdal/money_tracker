@@ -19,26 +19,26 @@ CSV reader written i python
 ---
 
 * Accounts
-    Functions:
+    - Functions:
         - Add
         - Delete
         - Alter
         - Active
 
-    Data:
+    - Data:
         - Account ID - Primary Key
         - Account number - text 
         - Account name - text
         - Account description - text
 
 * Stores
-    Functions:
+    - Functions:
         - Add
         - Delete
         - Alter
         - Active
 
-    Data:
+    - Data:
         - Store ID - Primary Key
         - Store name - text/varchar
 
